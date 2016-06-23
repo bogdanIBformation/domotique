@@ -20,17 +20,14 @@ public class PanneauThermostat extends PanneauAppareil implements ActionListener
 	public PanneauThermostat(AppareilTermostate pAppThermo, PanneauCompteur pPanoC){
 		super(pAppThermo, pPanoC);
 
-		//TODO creer  bouton diminuer
-		//...
+		btnDiminuerThermostat = new JButton("-");
 		add(btnDiminuerThermostat);
 
-		//TODO creer label Thermostat
-		//...		
+		lblThermostat = new JLabel(String.valueOf(pAppThermo.getValeurTermostat()));	
 		add(lblThermostat);
 
 		
-		//TODO creer  bouton diminuer
-		//...
+		btnAugmenterThermostat = new JButton("+");
 		add(btnAugmenterThermostat);
 	}
 
@@ -65,7 +62,7 @@ public class PanneauThermostat extends PanneauAppareil implements ActionListener
 	private void afficherThermostat(){
 		AppareilTermostate  cetAppareil=(AppareilTermostate)appareil;
 		String s=new Integer(cetAppareil.getValeurTermostat()).toString();
-		if (s.length()<2)s="0"+s;
+		if (s.length()<2) s="0"+s;
 		
 		//TOTO setter s comme label IHM
 		//lblThermostat.set....;
