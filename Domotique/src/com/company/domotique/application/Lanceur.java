@@ -13,7 +13,7 @@ public class Lanceur {
 			
 		System.out.println("Bonjour");
 		AppareilElectrique ordinateur= new AppareilElectrique("DELL","GX100",500);
-		AppareilTermostate chauffage= new AppareilTermostate("Atlantic", "7XB12", 1320, 110, 12);
+		AppareilTermostate chauffage= new AppareilTermostate("Atlantic", "7XB12", 1320, 110, 9);
 		//AppareilTermostate unChauffage = new AppareilTermostate("Atlantic", "7XB12", 1320, 110, 12);
 		
 
