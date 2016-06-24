@@ -39,8 +39,6 @@ public class LanceurIHM {
 		
 		
 		
-		
-		
 //		unMicroOnde.setValeurTermostat(valeurThermostatMax);
 //		unMicroOnde.demarrer();
 //		unCompteurEDF.brancher(unMicroOnde);

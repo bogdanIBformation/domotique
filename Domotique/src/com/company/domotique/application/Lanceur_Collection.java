@@ -32,15 +32,15 @@ public class Lanceur_Collection {
 		microOndes.demarrer();
 		
 		Compteur unCompteur = new Compteur("EDF", "Linky", 2000);
-//		unCompteur.brancher(ordinateur);
+//	unCompteur.brancher(ordinateur);
 //		unCompteur.brancher(chauffage);
-//		unCompteur.brancher(microOndes);
-//		unCompteur.brancher(lampe);
-//		unCompteur.brancher(lampe1);
-//		unCompteur.brancher(lampe2);
-//		unCompteur.brancher(lampe2);
-//		
-//		
+//	unCompteur.brancher(microOndes);
+//	unCompteur.brancher(lampe);
+//	unCompteur.brancher(lampe1);
+//	unCompteur.brancher(lampe2);
+//	unCompteur.brancher(lampe2);
+//	
+	
 		
 		
 		
