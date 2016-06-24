@@ -15,6 +15,7 @@ public class CadreGeneral extends JFrame {
 	private AppareilElectrique monAppElec;
 	private AppareilTermostate monAppThermos;
 	private Compteur monCompteur;
+	private Horloge monHorloge;
 	
 	
 	/*
@@ -26,6 +27,7 @@ public class CadreGeneral extends JFrame {
 		monAppElec = pAppElec;
 		monAppThermos = pAppThermos;
 		monCompteur = pCompteur;
+		monHorloge= new Horloge();
 		
 		getContentPane().setLayout(new FlowLayout());
 		getContentPane().setBackground(new Color(125,204,204));
@@ -37,7 +39,8 @@ public class CadreGeneral extends JFrame {
 
 		getContentPane().add(unPanoE);
 		getContentPane().add(unPanoT);
-		getContentPane().add(unPanoC);		
+		getContentPane().add(unPanoC);	
+		getContentPane().add(monHorloge);
 	
 		setSize(550,200);
 		setVisible(true);

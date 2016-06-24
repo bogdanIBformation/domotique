@@ -6,6 +6,7 @@ import java.util.Enumeration;
 import java.util.Iterator;
 
 import com.company.domotique.appareils.AppareilElectrique;
+import com.company.domotique.exceptions.CompteurADisjoncteException;
 import com.company.domotique.inter.ConsommateurDeCourant;
 import com.company.domotique.inter.ProducteurDeCourant;
 
@@ -22,18 +23,23 @@ public class Compteur extends AppareilElectrique implements ProducteurDeCourant 
 	
 
 	@Override
-	public void brancher(ConsommateurDeCourant cc) {
-
+	public void brancher(ConsommateurDeCourant cc) throws CompteurADisjoncteException{
+		int puissanceDisponible= puissanceMaxWatts-puissanceInstantanee;
+		
 		int puissanceCc = cc.getConsommation();
-		if ((puissanceInstantanee + puissanceCc) < puissanceMaxWatts) {
+		if (puissanceCc <= puissanceDisponible) {
 			this.mesAppareilsBranches.add(cc);
 			this.puissanceInstantanee+= puissanceCc;
 			System.out.println("Compteur brancher puissanceCc = " +puissanceCc+ " puissanceInstantanee = "+puissanceInstantanee+ " puissanceMaxWatts = "+puissanceMaxWatts);
 		} else {
 			disjoncter(); 
 			System.out.println("STOP");
+			throw new CompteurADisjoncteException(this, puissanceInstantanee+puissanceCc);
+		
 		}
 	}
+	
+	
 	
 	public int getPuissanceInstantanee() {
 		return puissanceInstantanee;
