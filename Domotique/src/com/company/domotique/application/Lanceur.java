@@ -1,5 +1,11 @@
 package com.company.domotique.application;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 import com.company.domotique.appareils.AppareilElectrique;
 import com.company.domotique.appareils.AppareilTermostate;
 
@@ -8,7 +14,7 @@ public class Lanceur {
 		public static void main(String [] args){
 		
 		
-			
+		
 			
 			
 		System.out.println("Bonjour");
@@ -54,7 +60,33 @@ public class Lanceur {
 
 
 	System.out.println("Au revoir!");
-				
-	}
 
+		try {
+			Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
+			Connection connexion = DriverManager.getConnection("jdbc:odbc:DSNDomotique");
+			Statement laRequete =connexion.createStatement();
+			ResultSet leResultat =laRequete.executeQuery("Select * FROM APPAREIL_ELECTRIQUE_TBL");
+			afficherTable(leResultat);
+			int leResultat1 = laRequete.executeUpdate("UPDATE APPAREIL_ELECTRIQUE_TBL SET puissanceMaxWatt=150 WHERE code=3");
+			leResultat =laRequete.executeQuery("Select * FROM APPAREIL_ELECTRIQUE_TBL");
+			System.out.println("---------------------------");
+			afficherTable(leResultat);
+			connexion.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+		}
+
+		private static void afficherTable(ResultSet leResultat) throws SQLException {
+			while (leResultat.next()) {
+				System.out.print("  "+ leResultat.getString("marque"));
+				System.out.print("  "+ leResultat.getString("modele"));
+				System.out.println("  "+ leResultat.getInt("puissanceMaxwatt"));
+			}
+		}		
+		
 }
